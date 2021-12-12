@@ -32,7 +32,6 @@ const useStyles = makeStyles(({ spacing }) => ({
     justifyContent: 'center',
     flexDirection: 'column',
     width: '100%',
-    border: '2px solid black',
   },
   '@keyframes gradient': {
     '0%': {
