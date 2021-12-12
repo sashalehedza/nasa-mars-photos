@@ -6,9 +6,9 @@ const PhotoItem = (props) => {
       <div>Camera - {props.photo.camera.name}</div>
       <div>
         <img
-          style={{ width: 100, height: 100 }}
-          alt={props.photo.img_src}
-          src={props.photo.img_src}
+          style={{ width: 200, height: 200 }}
+          alt={props.photo.id}
+          src={props.photo.img_src.toString().replace('http', 'https')}
         />
       </div>
 
