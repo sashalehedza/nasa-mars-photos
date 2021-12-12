@@ -148,13 +148,13 @@ const App = () => {
         <MySelect
           value={selectedRover}
           onChange={(event) => handleRoverChange(event)}
-          defaultValue='Rover'
+          defaultValue='Select Rover'
           options={[{ value: 'Curiosity', name: 'Curiosity' }]}
         />
         <MySelect
           value={selectedCamera}
           onChange={(event) => handleCameraChange(event)}
-          defaultValue='Camera'
+          defaultValue='Select Camera'
           options={[
             { value: 'FHAZ', name: 'FHAZ' },
             { value: 'MAST', name: 'MAST' },
@@ -165,7 +165,7 @@ const App = () => {
         <MySelect
           value={selectedSol}
           onChange={(event) => handleSolChange(event)}
-          defaultValue='Sol'
+          defaultValue='Select Sol'
           options={[
             { value: '1000', name: '1000' },
             { value: '2000', name: '2000' },
