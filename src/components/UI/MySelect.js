@@ -31,7 +31,6 @@ const MySelect = ({ options, defaultValue, value, onChange }) => {
           label={defaultValue}
           onChange={(event) => onChange(event.target.value)}
         >
-          <MenuItem value=''>{defaultValue}</MenuItem>
           {options.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.name}
