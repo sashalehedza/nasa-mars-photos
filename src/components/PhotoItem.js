@@ -24,7 +24,7 @@ import Typography from '@mui/material/Typography'
 
 const PhotoItem = (props) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} style={{ marginBottom: 20 }}>
       <CardMedia
         component='img'
         alt={props.photo.id}
