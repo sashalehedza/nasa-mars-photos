@@ -1,7 +1,51 @@
+import { makeStyles } from '@material-ui/core'
+
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
+
+const useStyles = makeStyles(({ spacing }) => ({
+  form: {
+    '& > :not(:first-child)': {
+      marginTop: spacing(2),
+    },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  },
+  content: {
+    padding: '0px',
+    margin: '0px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    width: '100%',
+  },
+  profileContent: {
+    padding: '20px',
+    margin: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    width: '100%',
+    border: '2px solid black',
+  },
+  '@keyframes gradient': {
+    '0%': {
+      backgroundPosition: '0% 50%',
+    },
+    '50%': {
+      backgroundPosition: '100% 50%',
+    },
+    '100%': {
+      backgroundPosition: '0% 50%',
+    },
+  },
+}))
 
 // const PhotoItem = (props) => {
 //   return (
@@ -23,18 +67,21 @@ import Typography from '@mui/material/Typography'
 // }
 
 const PhotoItem = (props) => {
+  const classes = useStyles()
   return (
-    <Card sx={{ maxWidth: 345 }} style={{ marginBottom: 20 }}>
+    <Card
+      className={classes.profileContent}
+      sx={{ maxWidth: '60%' }}
+      style={{ marginBottom: 20 }}
+    >
       <CardMedia
         component='img'
         alt={props.photo.id}
-        height='140'
+        height='auto'
         image={props.photo.img_src.toString().replace('http', 'https')}
       />
-      <CardContent>
-        <Typography gutterBottom variant='h5' component='div'>
-          Sol - {props.photo.sol}
-        </Typography>
+      <CardContent className={classes.content}>
+        <Typography>Sol - {props.photo.sol}</Typography>
         <Typography>Rover - {props.photo.rover.name}</Typography>
         <Typography>Camera - {props.photo.camera.name}</Typography>
       </CardContent>

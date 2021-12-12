@@ -21,7 +21,7 @@ import Select from '@mui/material/Select'
 
 const MySelect = ({ options, defaultValue, value, onChange }) => {
   return (
-    <Box sx={{ minWidth: 120 }} style={{ marginBottom: 20 }}>
+    <Box sx={{ minWidth: '70%' }} style={{ marginBottom: 20 }}>
       <FormControl fullWidth>
         <InputLabel id='demo-simple-select-label'>{defaultValue}</InputLabel>
         <Select

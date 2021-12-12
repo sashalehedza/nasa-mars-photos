@@ -1,3 +1,5 @@
+import { makeStyles } from '@material-ui/core'
+import Button from '@mui/material/Button'
 import React, { useState, useEffect, useCallback } from 'react'
 import PhotoList from './components/PhotoList'
 import MySelect from './components/UI/MySelect'
@@ -5,7 +7,50 @@ import MySelect from './components/UI/MySelect'
 import { getPhotos } from './service/api'
 import './App.css'
 
+const useStyles = makeStyles(({ spacing }) => ({
+  form: {
+    '& > :not(:first-child)': {
+      marginTop: spacing(2),
+    },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  },
+  content: {
+    padding: '0px',
+    margin: '0px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    width: '100%',
+  },
+  profileContent: {
+    padding: '20px',
+    margin: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    width: '100%',
+    border: '2px solid black',
+  },
+  '@keyframes gradient': {
+    '0%': {
+      backgroundPosition: '0% 50%',
+    },
+    '50%': {
+      backgroundPosition: '100% 50%',
+    },
+    '100%': {
+      backgroundPosition: '0% 50%',
+    },
+  },
+}))
+
 const App = () => {
+  const classes = useStyles()
   const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(false)
   const [photosPerPage, setPhotoPerPage] = useState(5)
@@ -98,52 +143,57 @@ const App = () => {
   }, [])
 
   return (
-    <div className='container mt-5'>
-      <h1 className='text-primary mb-3'>Nasa Mars Photos</h1>
-      <MySelect
-        value={selectedRover}
-        onChange={(event) => handleRoverChange(event)}
-        defaultValue='Rover'
-        options={[{ value: 'Curiosity', name: 'Curiosity' }]}
-      />
-      <MySelect
-        value={selectedCamera}
-        onChange={(event) => handleCameraChange(event)}
-        defaultValue='Camera'
-        options={[
-          { value: 'FHAZ', name: 'FHAZ' },
-          { value: 'MAST', name: 'MAST' },
-          { value: 'NAVCAM', name: 'NAVCAM' },
-          { value: 'CHEMCAM', name: 'CHEMCAM' },
-        ]}
-      />
-      <MySelect
-        value={selectedSol}
-        onChange={(event) => handleSolChange(event)}
-        defaultValue='Sol'
-        options={[
-          { value: '1000', name: '1000' },
-          { value: '2000', name: '2000' },
-        ]}
-      />
+    <div className={classes.content}>
+      <div className={classes.profileContent}>
+        <h1 className='text-primary mb-3'>Nasa Mars Photos</h1>
+        <MySelect
+          value={selectedRover}
+          onChange={(event) => handleRoverChange(event)}
+          defaultValue='Rover'
+          options={[{ value: 'Curiosity', name: 'Curiosity' }]}
+        />
+        <MySelect
+          value={selectedCamera}
+          onChange={(event) => handleCameraChange(event)}
+          defaultValue='Camera'
+          options={[
+            { value: 'FHAZ', name: 'FHAZ' },
+            { value: 'MAST', name: 'MAST' },
+            { value: 'NAVCAM', name: 'NAVCAM' },
+            { value: 'CHEMCAM', name: 'CHEMCAM' },
+          ]}
+        />
+        <MySelect
+          value={selectedSol}
+          onChange={(event) => handleSolChange(event)}
+          defaultValue='Sol'
+          options={[
+            { value: '1000', name: '1000' },
+            { value: '2000', name: '2000' },
+          ]}
+        />
 
-      {loading ? (
-        <h3>Loading Photos</h3>
-      ) : (
-        <>
-          <PhotoList photos={filteredList} visiblePhotos={photosPerPage} />
-          <button
-            style={{
-              marginBottom: '20px',
-              display: photosPerPage >= filteredList.length ? 'none' : 'block',
-            }}
-            type='button'
-            onClick={handleClick}
-          >
-            Load more
-          </button>
-        </>
-      )}
+        {loading ? (
+          <h3>Loading Photos</h3>
+        ) : (
+          <>
+            <PhotoList photos={filteredList} visiblePhotos={photosPerPage} />
+
+            <Button
+              variant='outlined'
+              color='inherit'
+              style={{
+                marginBottom: '20px',
+                display:
+                  photosPerPage >= filteredList.length ? 'none' : 'block',
+              }}
+              onClick={handleClick}
+            >
+              Load more
+            </Button>
+          </>
+        )}
+      </div>
     </div>
   )
 }
