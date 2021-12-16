@@ -67,7 +67,7 @@ const App = () => {
       setLoading(false)
     }
     fetchPhotos()
-  }, [])
+  }, [photos])
 
   const handleRoverChange = (event) => {
     setSelectedRover(event)
